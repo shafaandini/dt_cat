@@ -1,5 +1,5 @@
 <?php
 
-echo "hadeh";
+echo "huft";
 
  ?>
