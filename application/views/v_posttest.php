@@ -27,23 +27,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </a>
 
         <span class="simple-text">
-          <span> nama siswa </span>
+          <span> <?= $bio[0]->name ?> </span>
         </span>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
-            <a href="./dashboard.html">
+          <li>
+            <a href="<?php echo base_url('c_dashboard') ?>">
               <p>Beranda</p>
             </a>
           </li>
           <li>
-            <a href="./pretest.html">
+            <a href="<?php echo base_url('c_dashboard/pretest') ?>">
               <p>Pre-Test</p>
             </a>
           </li>
-          <li>
-            <a href="./posttest.html">
+          <li class="active ">
+            <a href="<?php echo base_url('c_dashboard/posttest') ?>">
               <p>Post-Test</p>
             </a>
           </li>
@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link btn-rotate" href="#"> Keluar</a>
+                <a class="nav-link btn-rotate" href="<?php echo base_url('c_login/logout') ?>"> Keluar</a>
               </li>
             </ul>
           </div>
@@ -73,43 +73,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="col-md-12">
             <div class="card ">
               <div class="card-header ">
-                <h5 class="card-title">Hasil Tes </h5>
+                <h5 class="card-title">Post-Test</h5>
 								<hr>
               </div>
               <div class="card-body">
-
-								<!-- hasil pre-test -->
-								<div class="row">
-								<div class="col-md-6">
-									<div class="card">
-										<div class="card-header">
-											<div class="card-title">
-												<span>Pre-test</span>
-												<hr>
-											</div>
-											<div class="card-body">
-												<p>Hasil pre-test</p>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="card">
-										<div class="card-header">
-											<div class="card-title">
-												<span>Post-Test</span>
-												<hr>
-											</div>
-											<div class="card-body">
-												<p>Hasil Post-Test</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								</div>
-								<!-- hasil pre-test END-->
-
+                <p>Nantikan Post-Test</p>
               </div>
             </div>
           </div>
@@ -121,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <span class="copyright">
                 © <script>
                   document.write(new Date().getFullYear())
-                </script> </i> by Creative Tim, Modified by Shafa Putri Andini
+                </script> </i>Made by Creative Tim, Modified by Shafa Putri Andini
               </span>
             </div>
           </div>

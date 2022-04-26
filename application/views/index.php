@@ -1,6 +1,8 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
+<?php $status = 0;
+
+if($status != 0){
+  
+}?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,18 +24,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 	        <div class="card border-0 shadow rounded-3 my-5">
 	          <div class="card-body p-4 p-sm-5">
-	            <h5 class="card-title text-center mb-5 fw-light fs-5">Design Thinking Adaptive Test</h5>
-	            <form action="<?php //echo base_url('login/process') ?>" method="post">
+	            <h5 class="card-title text-center mb-10 fw-light fs-5">Design Thinking Adaptive Test</h5>
+	            <form action="<?php echo base_url('c_login/process') ?>" method="post">
+
+                <span style="text-align: center; font-size:10px">
+    							<p style="color:red"> <?php echo $this->session->flashdata('login_error'); ?> </p>
+    							<p style="color:green"> <?php echo $this->session->flashdata('input_success'); ?> </p>
+    						</span>
+
 	              <div class="form-floating mb-3">
-	                <label for="floatingInput">Nama Lengkap</label>
-									<input type="text" class="form-control" id="#">
+                  <?php //echo $status; ?>
+	                <label for="floatingInput">Nama Pengguna</label>
+									<input type="text" class="form-control" name="username">
 	              </div>
 	              <div class="form-floating mb-3">
 									<label for="floatingPassword">Kata Sandi</label>
-	                <input type="password" class="form-control" id="#">
+	                <input type="password" class="form-control" name="password">
 	              </div>
 	              <div class="form-floating mb-3">
-	                <button class="btn btn-success btn-login" type="submit">Masuk </button>
+	                <button class="btn btn-success" type="submit" name="login">Masuk</button>
 	              </div>
 	            </form>
 	          </div>
@@ -41,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      </div>
 	    </div>
 	  </div>
-		<a href="<?php echo base_url('login/process') ?>"> dashboard</a>
+		<!--<a href="<?php //echo base_url('c_login/process') ?>"> dashboard</a>-->
 	</body>
 
 </html>
