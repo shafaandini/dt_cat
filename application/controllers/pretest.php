@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class c_posttest extends CI_Controller {
+class pretest extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -17,6 +17,7 @@ class c_posttest extends CI_Controller {
 
 	public function index() {
 		$data['bio'] 	 = $this->m_user->getUser($this->session->userdata('id_user'))->result();
-		$this->load->view('v_posttest',$data);
+		$this->load->view('v_pretest',$data);
 	}
+
 }

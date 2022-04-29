@@ -33,17 +33,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="<?php echo base_url('c_dashboard') ?>">
+            <a href="<?php echo base_url().'dashboard' ?>">
               <p>Beranda</p>
             </a>
           </li>
           <li>
-            <a href="<?php echo base_url('c_dashboard/pretest') ?>">
+            <a href="<?php echo base_url().'pretest' ?>">
               <p>Pre-Test</p>
             </a>
           </li>
           <li class="active ">
-            <a href="<?php echo base_url('c_dashboard/posttest') ?>">
+            <a href="<?php echo base_url().'posttest' ?>">
               <p>Post-Test</p>
             </a>
           </li>
@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link btn-rotate" href="<?php echo base_url('c_login/logout') ?>"> Keluar</a>
+                <a class="nav-link btn-rotate" href="<?php echo base_url().'logout' ?>"> Keluar</a>
               </li>
             </ul>
           </div>

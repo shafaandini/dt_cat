@@ -1,8 +1,3 @@
-<?php $status = 0;
-
-if($status != 0){
-  
-}?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +20,7 @@ if($status != 0){
 	        <div class="card border-0 shadow rounded-3 my-5">
 	          <div class="card-body p-4 p-sm-5">
 	            <h5 class="card-title text-center mb-10 fw-light fs-5">Design Thinking Adaptive Test</h5>
-	            <form action="<?php echo base_url('c_login/process') ?>" method="post">
+	            <form action="<?php echo base_url().'login/process' ?>" method="post">
 
                 <span style="text-align: center; font-size:10px">
     							<p style="color:red"> <?php echo $this->session->flashdata('login_error'); ?> </p>
@@ -33,7 +28,6 @@ if($status != 0){
     						</span>
 
 	              <div class="form-floating mb-3">
-                  <?php //echo $status; ?>
 	                <label for="floatingInput">Nama Pengguna</label>
 									<input type="text" class="form-control" name="username">
 	              </div>
@@ -42,7 +36,7 @@ if($status != 0){
 	                <input type="password" class="form-control" name="password">
 	              </div>
 	              <div class="form-floating mb-3">
-	                <button class="btn btn-success" type="submit" name="login">Masuk</button>
+	                <button class="btn btn-success">Masuk</button>
 	              </div>
 	            </form>
 	          </div>
