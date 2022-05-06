@@ -8,11 +8,9 @@ class posttest extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('m_user');
 
-		if(!$this->session->userdata('username')==NULL){
-			if($this->session->userdata('username')==TRUE){
-				redirect('c_dashboard');
+		if($this->session->userdata('id_user')==NULL){
+				redirect('login');
 			}
-		}
 	}
 
 	public function index() {

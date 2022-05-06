@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
               <div class="card-body">
                 <p>Silakan ikuti Pre-Test terlebih dahulu</p>
-                <button class="btn btn-success" type="button" href="#">Ikuti</button>
+                <a class="btn btn-success" href="<?php echo base_url().'test_pretest'; ?>">Ikuti</a>
               </div>
             </div>
           </div>

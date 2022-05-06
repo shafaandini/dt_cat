@@ -24,7 +24,7 @@
         </a>
 
         <span class="simple-text">
-          <span><?= $bio[0]->name ?></span>
+          <span><?= $bio[0]->name; ?></span> <br>
         </span>
       </div>
       <div class="sidebar-wrapper">
@@ -86,6 +86,7 @@
 											</div>
 											<div class="card-body">
 												<p>Hasil Pre-Test</p>
+                          <?php  ?>
 											</div>
 										</div>
 									</div>
