@@ -1,102 +1,108 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    Design Thinking Adaptive Test
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!-- CSS Files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-  </head>
 
-<body class="">
-  <div class="wrapper">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <div class="logo">
-        <a class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="assets/img/logo-small.png">
-          </div>
-        </a>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <span class="simple-text">
-          <span> <?= $bio[0]->name ?> </span>
-        </span>
-      </div>
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li>
-            <a href="<?php echo base_url().'dashboard' ?>">
-              <p>Beranda</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo base_url().'pretest' ?>">
-              <p>Pre-Test</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="<?php echo base_url().'posttest' ?>">
-              <p>Post-Test</p>
-            </a>
-          </li>
+    <title>Design Thinking Adaptive Test</title>
+    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <div id="wrapper">
+        <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+              <div class="sidebar-brand-text"><?php echo $bio[0]->name; ?></div>
+          </a>
+
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url().'dashboard' ?>">
+                    <i class="fas fa-fw fa-bookmark"></i>
+                    <span>Beranda</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url().'pretest' ?>">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Pre-Test</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="<?php echo base_url().'posttest' ?>">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Post-Test</span></a>
+            </li>
         </ul>
-      </div>
-    </div>
-    <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <a class="navbar-brand">Design Thinking Adaptive Test</a>
-          </div>
+        <!-- End of Sidebar -->
 
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link btn-rotate" href="<?php echo base_url().'logout' ?>"> Keluar</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- End Navbar -->
-      <div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Post-Test</h5>
-								<hr>
-              </div>
-              <div class="card-body">
-                <p>Nantikan Post-Test</p>
-              </div>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Topbar Navbar -->
+
+                    <h5 class="text-dark"> Design Thinking Adaptive Test </h5>
+
+                    <ul class="navbar-nav ml-auto">
+                          <a href="<?php echo base_url().'logout'; ?>" class="text-dark"> Keluar</a>
+                    </ul>
+
+                </nav>
+                <div class="container-fluid">
+
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-dark">Post-Test</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                  <p> Silakan ikuti Pre-Test terlebih dahulu</p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
-      <footer class="footer footer-black  footer-white ">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="credits ml-auto">
-              <span class="copyright">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script> </i>Made by Creative Tim, Modified by Shafa Putri Andini
-              </span>
-            </div>
-          </div>
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
         </div>
-      </footer>
+        <!-- End of Content Wrapper -->
     </div>
-  </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="assets/js/sb-admin-2.min.js"></script>
+
 </body>
-
 </html>

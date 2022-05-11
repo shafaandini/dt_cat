@@ -17,5 +17,4 @@ class pretest extends CI_Controller {
 		$data['bio'] 	 = $this->m_user->getUser($this->session->userdata('id_user'))->result();
 		$this->load->view('v_pretest',$data);
 	}
-
 }
