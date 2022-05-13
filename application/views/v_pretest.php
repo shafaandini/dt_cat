@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Design Thinking Adaptive Test</title>
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
-</head>
+<?php $this->load->view('temp/head'); ?>
 
 <body id="page-top">
 
@@ -92,6 +78,7 @@
                     </div>
                 </div>
             </footer>
+
             <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->
@@ -111,10 +98,9 @@
         ! Ketika sedang mengerjakan tes, jangan menekan tombol kembali agar tidak terjadi kegagalan !
        </p>
       </div>
-
       <!--Footer-->
       <div class="modal-footer flex-center">
-        <a href="<?php echo base_url().'run_pretest'; ?>" class="btn btn-success">Mulai Tes</a>
+        <a href="<?php echo base_url('pretest/questionstart/'.$pretestQuestion[0]->id_pr_question); ?>" class="btn btn-success">Mulai Tes</a>
         <a type="button" class="btn btn-danger" data-dismiss="modal">Nanti</a>
       </div>
     </div>

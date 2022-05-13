@@ -15,4 +15,10 @@ class m_user extends CI_Model{
 		);
 		return $this->db->get_where('tbl_user',$data);
 	}
+
+  public function updateResult($data, $where) {
+    $this->db->set($data);
+    $this->db->where($where);
+    $this->db->update('tbl_user');
+  }
 }
