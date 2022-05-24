@@ -60,10 +60,22 @@
                                     <h6 class="m-0 font-weight-bold text-dark">Pre-Test</h6>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
-                                  <p> Silakan ikuti Pre-Test terlebih dahulu</p>
-                                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
-                                </div>
+                                <?php if($bio[0]->result_pretest == NULL) { ?>
+                                  <div class="card-body">
+                                    <p> Silakan ikuti Pre-Test terlebih dahulu.</p>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
+                                  </div>
+                                <?php }
+                                  else { ?>
+                                    <div class="card-body">
+                                      <p><b> Kamu sudah mengikuti Pretest! </b></p>
+                                      <p class="text-justify"> <?php echo $pretest[0]->id_level ?> | <?php echo $pretest[0]->level ?> <br>
+                                         <?php echo $pretest[0]->description ?>
+                                      <hr> <br>
+                                      Silakan mengikuti Post-Test di halaman Post-Test.
+                                     </p>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -100,7 +112,7 @@
       </div>
       <!--Footer-->
       <div class="modal-footer flex-center">
-        <a href="<?php echo base_url('pretest/questionstart/'.$pretestQuestion[0]->id_pr_question); ?>" class="btn btn-success">Mulai Tes</a>
+        <a href="<?php echo base_url('pretest/questiondisplay/'.$pretestQuestion[0]->id_pr_question); ?>" class="btn btn-success">Mulai Tes</a>
         <a type="button" class="btn btn-danger" data-dismiss="modal">Nanti</a>
       </div>
     </div>

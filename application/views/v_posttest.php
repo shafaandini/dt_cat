@@ -61,9 +61,25 @@
                                     <h6 class="m-0 font-weight-bold text-dark">Post-Test</h6>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
-                                  <p> Silakan ikuti Pre-Test terlebih dahulu</p>
-                              </div>
+                                <?php if($bio[0]->result_pretest == NULL) { ?>
+                                  <div class="card-body">
+                                    <p> Silakan ikuti Pre-Test terlebih dahulu di halaman Pre-Test.</p>
+                                  </div>
+                                <?php }
+                                  else {
+                                    if($bio[0]->result_posttest == NULL) { ?>
+                                    <div class="card-body">
+                                      <p> Silakan ikuti Post-Test.</p>
+                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
+                                    </div>
+                                <?php }
+                                  else{ ?>
+                                    <p class="text-justify"> <?php echo $posttest[0]->id_level ?> | <?php echo $posttest[0]->level ?> <br>
+                                       <?php echo $posttest[0]->description ?>
+                                    <hr> <br>
+                                   </p>
+                              <?php }
+                                }?>
                             </div>
                         </div>
                     </div>

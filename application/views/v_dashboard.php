@@ -9,6 +9,7 @@
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+
               <div class="sidebar-brand-text"><?php echo $bio[0]->name; ?></div>
           </a>
 
@@ -64,9 +65,18 @@
                                     <h6 class="m-0 font-weight-bold text-dark">Pre-Test</h6>
                                 </div>
                                 <!-- Card Body -->
+                              <?php if($bio[0]->result_pretest == NULL){ ?>
                                 <div class="card-body">
-                                  <p> Anda belum mengikuti pre-test</p>
+                                  <p> Kamu belum mengikuti Pre-Test</p>
                                 </div>
+                              <?php }
+                              else { ?>
+                                <div class="card-body">
+                                  <p><b> Kamu sudah mengikuti Pre-Test! </b></p>
+                                  <p class="text-justify"> <?php echo $pretest[0]->id_level ?> | <?php echo $pretest[0]->level ?> <br>
+                                     <?php echo $pretest[0]->description ?></p>
+                                </div>
+                              <?php } ?>
                             </div>
                         </div>
 
@@ -79,9 +89,18 @@
                                     <h6 class="m-0 font-weight-bold text-dark">Post-Test</h6>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
-                                  <p> Anda belum mengikuti post-test</p>
-                                </div>
+                                <?php if($bio[0]->result_posttest == NULL) {?>
+                                  <div class="card-body">
+                                    <p> Kamu belum mengikuti Post-Test</p>
+                                  </div>
+                                <?php }
+                                  else { ?>
+                                    <div class="card-body">
+                                      <p><b> Kamu sudah mengikuti Post-Test! </b></p>
+                                      <p class="text-justify"> <?php echo $posttest[0]->id_level ?> | <?php echo $posttest[0]->level ?> <br>
+                                         <?php echo $posttest[0]->description ?></p>
+                                    </div>
+                                  <?php } ?>
                             </div>
                         </div>
                     </div>
