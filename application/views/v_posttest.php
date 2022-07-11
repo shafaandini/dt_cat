@@ -8,7 +8,7 @@
     <div id="wrapper">
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
-          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url().'dashboard' ?>">
               <div class="sidebar-brand-text"><?php echo $bio[0]->name; ?></div>
           </a>
 
@@ -99,6 +99,31 @@
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
+
+    <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header d-flex justify-content-center">
+            <h6 class="heading text"><b>Design Thinking Adaptive Test <br> Post-Test </b> </h6>
+          </div>
+          <div class="modal-body">
+            <p class="text-justify">
+              Selamat kamu sudah menyelesaikan Pre-Test!
+            <br>Tes ini merupakan tes akhir yang berisikan soal dari materi Unsur dan Prinsip Tata Letak pada Mata Pelajaran
+            Dasar Desain Grafis. Tes ini untuk mengukur kemampuan Pemikiran Desain atau Design Thinking
+            di Mata Pelajaran Dasar Desain Grafis. <hr>
+            ! Ketika sedang mengerjakan tes, jangan menekan tombol kembali agar tidak terjadi kegagalan !
+           </p>
+          </div>
+          <!--Footer-->
+          <div class="modal-footer flex-center">
+            <a href="<?php //echo base_url('pretest/questiondisplay/'.$pretestQuestion[0]->id_pr_question); ?>" class="btn btn-success">Mulai Tes</a>
+            <a type="button" class="btn btn-danger" data-dismiss="modal">Nanti</a>
+          </div>
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/vendor/jquery/jquery.min.js"></script>

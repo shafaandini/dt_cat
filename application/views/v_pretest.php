@@ -8,7 +8,7 @@
     <div id="wrapper">
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
-          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url().'dashboard' ?>">
               <div class="sidebar-brand-text"><?php echo $bio[0]->name; ?></div>
           </a>
 

@@ -15,7 +15,9 @@ class pretest extends CI_Controller {
 	public function index() {
 		$this->load->model('m_user');
 		$this->load->model('m_pretest');
-		$data['bio'] = $this->m_user->getUser($this->session->userdata('id_user'));
+
+		$data['bio'] 						 = $this->m_user->getUser($this->session->userdata('id_user'));
+		$data['pretestQuestion'] = $this->m_pretest->getFirstQuestion();
 
 		$where = array(
 			'id_user' => $this->session->userdata('id_user')
@@ -54,7 +56,6 @@ class pretest extends CI_Controller {
 			$getAnswer 					 = $key->answer;
 			$getLevel 					 = $key->id_level;
 			$getNumberofQuestion = $key->number_of_question;
-			$getCluster					 = $key->cluster;
 		}
 
 		//bandingkan jawaban dari db dan yang dijawab
@@ -75,16 +76,7 @@ class pretest extends CI_Controller {
 		);
 		$this->m_pretest->updateAnswer($data, $where);
 
-		$nextId = $id_question+1;
-		$getNextData = $this->m_pretest->getData($nextId);
-		foreach ($getNextData as $key) {
-			$getNextNumber = $key->number_of_question;
-			$getNextLevel	 = $key->id_level;
-			$getNextCluster = $key->cluster;
-		}
-
-		//jika jawaban benar
-		if($correct == 1){
+		if ($correct == 1) {
 			//update level pencapaian di tabel akun
 			$data2 = array (
 				'result_pretest' => $getLevel
@@ -94,73 +86,25 @@ class pretest extends CI_Controller {
 			);
 			$this->m_user->updateResult($data2, $where2);
 
-			if($getNextCluster == 1) {
-				if ($getCluster == $getNextCluster) {
-					redirect('pretest/questiondisplay/'.$nextId);
+			$nextId = $id_question+1;
+			while($nextId > 0) {
+				$nextId++;
+				$getNextData = $this->m_pretest->getData($nextId);
+				foreach($getNextData as $key) {
+					$getNextNumber = $key->number_of_question;
 				}
-			}else{
-				$nextId2 = $id_question+1;
-				if($getCluster != $getNextCluster){
-					while($nextId2 > 0) {
-						$nextId2++;
-						$getNextData2 = $this->m_pretest->getData($nextId2);
-						foreach($getNextData2 as $key) {
-							$getNextCluster2 = $key->cluster;
-						}
-						$newId = $nextId2;
-						if($getCluster == $getNextCluster2) {
-							break;
-						}
-					} redirect('pretest/questiondisplay/'.$nextId2);
+				if($getNextNumber == $getNumberofQuestion+1) {
+					break;
 				}
-			}
+			} redirect('pretest/questiondisplay/'.$nextId);
 		}
-
-		//jika jawaban salah
 		else{
-
-			/*if(($getNumberofQuestion == 1) or ($getNumberofQuestion == 2)) {
-				$nextId2 = $id_question+1;
-				if(strcmp($getLevel,$getNextLevel) != 0) {
-					while ($nextId2 > 0) {
-						$nextId2++;
-						$getNextData2 = $this->m_pretest->getData($nextId2);
-						foreach($getNextData2 as $key) {
-							$getNextLevel2	= $key->id_level;
-						}
-						if(strcmp($getLevel,$getNextLevel2) == 0) {
-							break;
-						}
-					}
-					if(strcmp($getLevel,$getNextLevel2) == 0) {
-						$i=1;
-						while ($i > 0) {
-							$i++;
-							if($i != 3) {
-								redirect('pretest/questiondisplay/'.$nextId2);
-							}else{
-								break;
-							}
-						}echo "maaf kamu sudah salah 3x berturut-turut";
-					}else{
-						redirect('pretest/questiondisplay/'.$nextId2);
-					}
-				}
-			}/*else{
-				$stepbackId = $id_question-1;
-				if(strcmp($getLevel,$getNextLevel) != 0) {
-					while ($stepbackId > 0) {
-						$stepbackId--;
-						$getPrevData = $this->m_pretest->getData($stepbackId);
-						foreach($getPrevData as $key) {
-							$getPrevLevel	= $key->id_level;
-						}
-						if(strcmp($getLevel,$getPrevLevel) == 0) {
-							break;
-						}
-					}redirect('pretest/questiondisplay/'.$stepbackId);
-				}*/
-				//echo $stepbackId;
+			$nextId = $id_question+1;
+			if($id_question % 3 !=0) {
+				redirect('pretest/questiondisplay/'.$nextId);
+			}else {
+				echo "die";
 			}
 		}
- }
+	}
+}

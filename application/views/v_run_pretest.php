@@ -18,13 +18,13 @@
                             <div class="col-lg-12">
                                 <div class="p-4">
                                   <?php
-                                      $sans_array = array($question[0]->option1, $question[0]->option2, $question[0]->option3,
-                                                          $question[0]->option4, $question[0]->answer);
+                                      $sans_array = array($question[0]->choice1, $question[0]->choice2, $question[0]->choice3,
+                                                          $question[0]->choice4, $question[0]->answer);
                                       shuffle($sans_array);
                                    ?>
                                       <form action="<?php echo base_url('pretest/saveAnswer/'.$question[0]->id_pr_question) ?>" method="post">
                                       <input type="hidden" name="id_pr_question" value="<?php echo $question[0]->id_pr_question; ?>">
-                                      <p class="text-left"> Tipe Soal: <?php echo $question[0]->cat; ?></p>
+                                      <p class="text-left"> Tipe Soal: <?php echo $question[0]->category; ?></p>
                                       <img src="<?php echo base_url('assets/image/'.$question[0]->image) ?>" class="img-fluid">
                                       <p class="text-justify"> <?php echo $question[0]->question; ?> <br>
 
