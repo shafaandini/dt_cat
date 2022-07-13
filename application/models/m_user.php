@@ -8,14 +8,20 @@ class m_user extends CI_Model{
     return $this->db->get_where('tbl_user',$where)->result();
 	}
 
-  public function getLevelPretest($where){
+  public function getLevelPretest($id_user){
+    $data = array(
+			'id_user' => $id_user
+		);
     $this->db->join('tbl_level', 'tbl_level.id_level=tbl_user.result_pretest');
-    return $this->db->get_where('tbl_user',$where)->result();
+    return $this->db->get_where('tbl_user',$data)->result();
   }
 
-  public function getLevelPosttest($where){
-    $this->db->join('tbl_level', 'tbl_level.id_level=tbl_user.result_posttest');
-    return $this->db->get_where('tbl_user',$where)->result();
+  public function getLevelPosttest($id_user){
+    $data = array(
+      'id_user' => $id_user
+    );
+    $this->db->join('tbl_level', 'tbl_level.id_level=tbl_user.result_pretest');
+    return $this->db->get_where('tbl_user',$data)->result();
   }
 
   public function check($username,$password){

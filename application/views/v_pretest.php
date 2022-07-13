@@ -9,7 +9,7 @@
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url().'dashboard' ?>">
-              <div class="sidebar-brand-text"><?php echo $bio[0]->name; ?></div>
+              <div class="sidebar-brand-text"><?php echo $user[0]->name; ?></div>
           </a>
 
             <hr class="sidebar-divider my-0">
@@ -60,22 +60,42 @@
                                     <h6 class="m-0 font-weight-bold text-dark">Pre-Test</h6>
                                 </div>
                                 <!-- Card Body -->
-                                <?php if($bio[0]->result_pretest == NULL) { ?>
+                                <?php
+
+                                if($getResult->num_rows() > 0) {
+                                  if($lastResult[0]->id_pr_question == 3 AND $lastResult[0]->correct_status == 0){
+                                ?>
+                                <div class="card-body">
+                                  <p> Ups kamu masih belum berhasil. Silakan ikuti tes kembali</p>
+                                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
+                                </div>
+
+                                <?php
+                                  }else {?>
+
                                   <div class="card-body">
-                                    <p> Silakan ikuti Pre-Test terlebih dahulu.</p>
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
-                                  </div>
-                                <?php }
-                                  else { ?>
-                                    <div class="card-body">
-                                      <p><b> Kamu sudah mengikuti Pretest! </b></p>
-                                      <p class="text-justify"> <?php echo $pretest[0]->id_level ?> | <?php echo $pretest[0]->level ?> <br>
-                                         <?php echo $pretest[0]->description ?>
-                                      <hr> <br>
-                                      Silakan mengikuti Post-Test di halaman Post-Test.
-                                     </p>
+
+                                      <div class="alert alert-success" role="alert">
+                                        <h4 class="alert-heading">Kamu sudah mengikuti Pretest!</h4>
+                                        <p class="font-weight-light"> Design Thinking kamu berada di: </p>
+                                        <p class="font-weight-bold"> Tingkat <?php echo $level[0]->level ?>  </p>
+                                        <p class="mb-0"> <?php echo $level[0]->description ?> </p>
+                                        <hr>
+                                        <p class="font-weight-bold"> Silakan mengikuti Post-Test di halaman Post-Test. </p>
+                                      </div>
+
                                     </div>
-                                <?php } ?>
+
+                                  <?php } }
+                                  else{
+                                    ?>
+                                    <div class="card-body">
+                                      <p> Silakan ikuti Pre-Test terlebih dahulu.</p>
+                                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
+                                    </div>
+
+                                    <?php
+                                  } ?>
                             </div>
                         </div>
                     </div>
@@ -101,13 +121,11 @@
   <div class="modal-dialog modal-notify modal-info" role="document">
     <div class="modal-content text-center">
       <div class="modal-header d-flex justify-content-center">
-        <h6 class="heading text">Design Thinking Adaptive Test <br> Pre-Test </h6>
+        <h5 class="heading text font-weight-bold">Design Thinking Adaptive Test <br> Pre-Test </h5>
       </div>
       <div class="modal-body">
-        <p>Tes ini akan berisikan soal dari materi Unsur dan Prinsip Tata Letak pada Mata Pelajaran
-        Dasar Desain Grafis. Tes ini untuk mengukur kemampuan Pemikiran Desain atau Design Thinking
-        di Mata Pelajaran Dasar Desain Grafis. <hr>
-        ! Ketika sedang mengerjakan tes, jangan menekan tombol kembali agar tidak terjadi kegagalan !
+        <p class="font-weight-light">Tes ini akan berisikan soal dari materi Prinsip dan Elemen Desain Grafis pada Mata Pelajaran
+         Desain Grafis Percetakan. Tes ini diberikan untuk mengukur kemampuan Pemikiran Desain atau Design Thinking.
        </p>
       </div>
       <!--Footer-->

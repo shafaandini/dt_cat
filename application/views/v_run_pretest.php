@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-xl-6">
+            <div class="col-xl-12">
                 <div class="card shadow-lg my-5">
                   <div class="card-header">
                     <h5> <b> Pre-Test </b> </h5>
@@ -24,7 +24,7 @@
                                    ?>
                                       <form action="<?php echo base_url('pretest/saveAnswer/'.$question[0]->id_pr_question) ?>" method="post">
                                       <input type="hidden" name="id_pr_question" value="<?php echo $question[0]->id_pr_question; ?>">
-                                      <p class="text-left"> Tipe Soal: <?php echo $question[0]->category; ?></p>
+                                      <p class="font-weight-light"> Kategori Soal: <?php echo $question[0]->category; ?></p>
                                       <img src="<?php echo base_url('assets/image/'.$question[0]->image) ?>" class="img-fluid">
                                       <p class="text-justify"> <?php echo $question[0]->question; ?> <br>
 
@@ -43,9 +43,13 @@
                                       } ?>
 
                                     <div class="row">
-                                      <div class="col-xl-10"> </div>
+                                      <div class="col-xl-11"> </div>
                                         <button class="btn btn-success" type="submit"> Lanjut </button>
                                     </div>
+
+                                    <hr>
+                                      <p class="font-weight-light alert alert-danger">
+                                      *Soal yang sudah kamu jawab akan disimpan dan tidak bisa kembali ke soal sebelumnya.</p>
                                   </form>
 
                                 </div>

@@ -14,13 +14,11 @@ class dashboard extends CI_Controller {
 	}
 
 	public function index() {
-		$data['bio'] 	 = $this->m_user->getUser($this->session->userdata('id_user'));
+		$id_user = $this->session->userdata('id_user');
 
-		$where = array(
-			'id_user' => $this->session->userdata('id_user')
-		);
-		$data['pretest']  = $this->m_user->getLevelPretest($where);
-		$data['posttest'] = $this->m_user->getLevelPosttest($where);
+		$data['bio'] 	    = $this->m_user->getUser($id_user);
+		$data['pretest']  = $this->m_user->getLevelPretest($id_user);
+		$data['posttest'] = $this->m_user->getLevelPosttest($id_user);
 		$this->load->view('v_dashboard',$data);
 	}
 }

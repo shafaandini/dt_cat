@@ -72,9 +72,15 @@
                               <?php }
                               else { ?>
                                 <div class="card-body">
-                                  <p><b> Kamu sudah mengikuti Pre-Test! </b></p>
-                                  <p class="text-justify"> <?php echo $pretest[0]->id_level ?> | <?php echo $pretest[0]->level ?> <br>
-                                     <?php echo $pretest[0]->description ?></p>
+
+                                  <div class="alert alert-success" role="alert">
+                                    <h4 class="alert-heading">Kamu sudah mengikuti Pretest!</h4>
+                                    <p class="font-weight-light"> Design Thinking kamu berada di: </p>
+                                    <p class="font-weight-bold">Tingkat <?php echo $pretest[0]->level ?>  </p>
+                                    <p class="mb-0"> <?php echo $pretest[0]->description ?> </p>
+
+                                  </div>
+
                                 </div>
                               <?php } ?>
                             </div>

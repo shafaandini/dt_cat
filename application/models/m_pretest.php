@@ -16,6 +16,30 @@ class m_pretest extends CI_Model{
     return $this->db->get_where('tbl_pretest_question',array('id_pr_question' => $id))->result();
   }
 
+  public function getLastData($id_user){
+    $data = array(
+			'id_user' => $id_user
+		);
+    $this->db->order_by('id_pr_question', 'DESC');
+    $this->db->limit(1);
+    return $this->db->get_where('tbl_pretest_result',$data)->result();
+  }
+
+  public function getPretestResult($id_user)  {
+    $data = array(
+			'id_user' => $id_user
+		);
+    return $this->db->get_where('tbl_pretest_result',$data);
+  }
+
+  public function checkResult($id_question,$id_user){
+    $data = array(
+			'id_pr_question' => $id_question,
+			'id_user' => $id_user
+		);
+    return $this->db->get_where('tbl_pretest_result',$data);
+  }
+
   public function insertAnswer($data) {
     $this->db->insert('tbl_pretest_result',$data);
   }
