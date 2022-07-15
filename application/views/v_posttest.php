@@ -9,7 +9,7 @@
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url().'dashboard' ?>">
-              <div class="sidebar-brand-text"><?php echo $bio[0]->name; ?></div>
+              <div class="sidebar-brand-text"><?php echo $user[0]->name; ?></div>
           </a>
 
             <hr class="sidebar-divider my-0">
@@ -49,7 +49,6 @@
                 </nav>
                 <div class="container-fluid">
 
-
                     <div class="row">
 
                         <!-- Area Chart -->
@@ -61,25 +60,61 @@
                                     <h6 class="m-0 font-weight-bold text-dark">Post-Test</h6>
                                 </div>
                                 <!-- Card Body -->
-                                <?php if($bio[0]->result_pretest == NULL) { ?>
-                                  <div class="card-body">
-                                    <p> Silakan ikuti Pre-Test terlebih dahulu di halaman Pre-Test.</p>
-                                  </div>
-                                <?php }
-                                  else {
-                                    if($bio[0]->result_posttest == NULL) { ?>
+                                <?php
+
+                                if($getResult->num_rows() > 0) {
+                                  if($lastResult[0]->id_ps_question == 3 AND $lastResult[0]->correct_status == 0){
+                                ?>
+
+                                <div class="card-body">
+                                  <p> Ups kamu masih belum berhasil. Silakan ikuti tes kembali</p>
+                                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
+                                </div>
+
+
+                                <?php
+                                 }else {?>
+
+                                   <div class="card-body">
+                                     <div class="row">
+                                       <div class="col-6">
+                                         <div class="alert alert-success" role="alert">
+                                           <h4 class="alert-heading">Kamu sudah mengikuti Post-Test!</h4>
+                                           <p class="font-weight-light"> Design Thinking kamu berada di: </p>
+                                           <p class="font-weight-bold"> Tingkat <?php echo $level[0]->level ?>  </p>
+                                           <p class="mb-0">  </p>
+                                           <hr>
+                                           <p class="font-weight-bold"> Silakan mengikuti Post-Test di halaman Post-Test.
+                                           </div>
+                                       </div>
+
+                                       <div class="col-6">
+                                         <div class="alert alert-success" role="alert">
+                                           <h5 class="font-weight-bold text-center">Poin Kamu</h5> <hr>
+                                           <h1 class="display-2 font-weight-bold text-center"> <?php echo $getPostPoints[0]->count; ?></h1>
+                                         </div>
+                                       </div>
+                                     </div>
+                                   </div>
+
+                                  <?php } }
+                                 else{
+                                   if ($user[0]->result_pretest != NULL) {
+
+                                    ?>
                                     <div class="card-body">
                                       <p> Silakan ikuti Post-Test.</p>
-                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
+                                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
                                     </div>
-                                <?php }
-                                  else{ ?>
-                                    <p class="text-justify"> <?php echo $posttest[0]->id_level ?> | <?php echo $posttest[0]->level ?> <br>
-                                       <?php echo $posttest[0]->description ?>
-                                    <hr> <br>
-                                   </p>
-                              <?php }
-                                }?>
+
+                                    <?php
+                                  } else{ ?>
+                                    <div class="card-body">
+                                      <p> Silakan ikuti Pre-Test terlebih dahulu.</p>
+                                    </div>
+                              <?php
+                                  }
+                                } ?>
                             </div>
                         </div>
                     </div>
@@ -90,40 +125,37 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Shafa Putri Andini 2022</span>
                     </div>
                 </div>
             </footer>
+
             <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
 
-    <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-notify modal-info" role="document">
-        <div class="modal-content text-center">
-          <div class="modal-header d-flex justify-content-center">
-            <h6 class="heading text"><b>Design Thinking Adaptive Test <br> Post-Test </b> </h6>
-          </div>
-          <div class="modal-body">
-            <p class="text-justify">
-              Selamat kamu sudah menyelesaikan Pre-Test!
-            <br>Tes ini merupakan tes akhir yang berisikan soal dari materi Unsur dan Prinsip Tata Letak pada Mata Pelajaran
-            Dasar Desain Grafis. Tes ini untuk mengukur kemampuan Pemikiran Desain atau Design Thinking
-            di Mata Pelajaran Dasar Desain Grafis. <hr>
-            ! Ketika sedang mengerjakan tes, jangan menekan tombol kembali agar tidak terjadi kegagalan !
-           </p>
-          </div>
-          <!--Footer-->
-          <div class="modal-footer flex-center">
-            <a href="<?php //echo base_url('pretest/questiondisplay/'.$pretestQuestion[0]->id_pr_question); ?>" class="btn btn-success">Mulai Tes</a>
-            <a type="button" class="btn btn-danger" data-dismiss="modal">Nanti</a>
-          </div>
-        </div>
-        <!--/.Content-->
+<div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header d-flex justify-content-center">
+        <h5 class="heading text font-weight-bold">Design Thinking Adaptive Test <br> Pre-Test </h5>
+      </div>
+      <div class="modal-body">
+        <p class="font-weight-light">Tes ini akan berisikan soal dari materi Prinsip dan Elemen Desain Grafis pada Mata Pelajaran
+         Desain Grafis Percetakan. Tes ini diberikan untuk mengukur kemampuan Pemikiran Desain atau Design Thinking.
+       </p>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer flex-center">
+        <a href="<?php echo base_url('posttest/questiondisplay/'.$posttestQuestion[0]->id_ps_question); ?>" class="btn btn-success">Mulai Tes</a>
+        <a type="button" class="btn btn-danger" data-dismiss="modal">Nanti</a>
       </div>
     </div>
+    <!--/.Content-->
+  </div>
+</div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/vendor/jquery/jquery.min.js"></script>

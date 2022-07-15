@@ -20,7 +20,7 @@ class m_user extends CI_Model{
     $data = array(
       'id_user' => $id_user
     );
-    $this->db->join('tbl_level', 'tbl_level.id_level=tbl_user.result_pretest');
+    $this->db->join('tbl_level', 'tbl_level.id_level=tbl_user.result_posttest');
     return $this->db->get_where('tbl_user',$data)->result();
   }
 

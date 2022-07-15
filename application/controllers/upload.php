@@ -4,19 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class upload extends CI_Controller {
 
   public function index() {
-    $this->load->model('m_pretest');
+    $this->load->model('m_posttest');
     $this->load->view('uploadimage');
   }
 
   public function uploadImage() {
-    $this->load->model('m_pretest');
+    $this->load->model('m_posttest');
 
     $file_name = $_FILES['file_respon']['name'];
     $nmfile	   = "pict".$file_name;
 
     if($file_name == NULL){
     }else{
-      $config['upload_path']			= './assets/image';
+      $config['upload_path']			= './assets/image/posttest';
       $config['allowed_types']		= 'jpg|png|jpeg';
       $config['file_name']				= $nmfile;
 
@@ -29,13 +29,13 @@ class upload extends CI_Controller {
     }
 
       $data = array(
-        'answer' => $nmfile
+        'image' => $nmfile
       );
 
       $where = array(
-        'id_pr_question' => '4'
+        'number_of_question' => '1'
       );
-    $this->m_pretest->updateImage($data, $where);
+    $this->m_posttest->updateImage($data, $where);
     redirect('upload');
 		}
   }

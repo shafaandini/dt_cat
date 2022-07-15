@@ -61,7 +61,6 @@
                                 </div>
                                 <!-- Card Body -->
                                 <?php
-
                                 if($getResult->num_rows() > 0) {
                                   if($lastResult[0]->id_pr_question == 3 AND $lastResult[0]->correct_status == 0){
                                 ?>
@@ -74,23 +73,32 @@
                                   }else {?>
 
                                   <div class="card-body">
-
-                                      <div class="alert alert-success" role="alert">
-                                        <h4 class="alert-heading">Kamu sudah mengikuti Pretest!</h4>
-                                        <p class="font-weight-light"> Design Thinking kamu berada di: </p>
-                                        <p class="font-weight-bold"> Tingkat <?php echo $level[0]->level ?>  </p>
-                                        <p class="mb-0"> <?php echo $level[0]->description ?> </p>
-                                        <hr>
-                                        <p class="font-weight-bold"> Silakan mengikuti Post-Test di halaman Post-Test. </p>
+                                    <div class="row">
+                                      <div class="col-6">
+                                        <div class="alert alert-success" role="alert">
+                                          <h4 class="alert-heading">Kamu sudah mengikuti Pre-Test!</h4>
+                                          <p class="font-weight-light"> Design Thinking kamu berada di: </p>
+                                          <p class="font-weight-bold"> Tingkat <?php echo $level[0]->level ?>  </p>
+                                          <p class="mb-0"> </p>
+                                          <hr>
+                                          <p class="font-weight-bold"> Silakan mengikuti Post-Test di halaman Post-Test.
+                                          </div>
                                       </div>
 
+                                      <div class="col-6">
+                                        <div class="alert alert-success" role="alert">
+                                          <h5 class="font-weight-bold text-center">Poin Kamu</h5> <hr>
+                                          <h1 class="display-2 font-weight-bold text-center"> <?php echo $getPrePoints[0]->count; ?></h1>
+                                        </div>
+                                      </div>
                                     </div>
+                                  </div>
 
                                   <?php } }
                                   else{
                                     ?>
                                     <div class="card-body">
-                                      <p> Silakan ikuti Pre-Test terlebih dahulu.</p>
+                                      <p> Silakan ikuti Pre-Test.</p>
                                       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPush">Ikuti</button>
                                     </div>
 
@@ -106,7 +114,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Shafa Putri Andini 2022</span>
                     </div>
                 </div>
             </footer>

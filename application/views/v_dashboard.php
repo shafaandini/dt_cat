@@ -67,18 +67,21 @@
                                 <!-- Card Body -->
                               <?php if($bio[0]->result_pretest == NULL){ ?>
                                 <div class="card-body">
-                                  <p> Kamu belum mengikuti Pre-Test</p>
+                                  <p> Silakan ikuti Pre-Test terlebih dahulu di halaman <b>Pre-test</b></p>
                                 </div>
                               <?php }
                               else { ?>
                                 <div class="card-body">
-
                                   <div class="alert alert-success" role="alert">
                                     <h4 class="alert-heading">Kamu sudah mengikuti Pretest!</h4>
                                     <p class="font-weight-light"> Design Thinking kamu berada di: </p>
                                     <p class="font-weight-bold">Tingkat <?php echo $pretest[0]->level ?>  </p>
-                                    <p class="mb-0"> <?php echo $pretest[0]->description ?> </p>
+                                    <p class="mb-0"> </p>
+                                  </div>
 
+                                  <div class="alert alert-success" role="alert">
+                                    <h5 class="font-weight-bold text-center">Poin Kamu</h5> <hr>
+                                    <h1 class="display-2 font-weight-bold text-center"> <?php echo $getPrePoints[0]->count; ?></h1>
                                   </div>
 
                                 </div>
@@ -102,9 +105,18 @@
                                 <?php }
                                   else { ?>
                                     <div class="card-body">
-                                      <p><b> Kamu sudah mengikuti Post-Test! </b></p>
-                                      <p class="text-justify"> <?php echo $posttest[0]->id_level ?> | <?php echo $posttest[0]->level ?> <br>
-                                         <?php echo $posttest[0]->description ?></p>
+                                      <div class="alert alert-success" role="alert">
+                                        <h4 class="alert-heading">Kamu sudah mengikuti Post-Test!</h4>
+                                        <p class="font-weight-light"> Design Thinking kamu berada di: </p>
+                                        <p class="font-weight-bold">Tingkat <?php echo $pretest[0]->level ?>  </p>
+                                        <p class="mb-0">  </p>
+                                      </div>
+
+                                      <div class="alert alert-success" role="alert">
+                                        <h5 class="font-weight-bold text-center">Poin Kamu</h5> <hr>
+                                        <h1 class="display-2 font-weight-bold text-center"> <?php echo $getPostPoints[0]->count; ?></h1>
+                                      </div>
+
                                     </div>
                                   <?php } ?>
                             </div>
@@ -117,7 +129,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Shafa Putri Andini 2022</span>
                     </div>
                 </div>
             </footer>

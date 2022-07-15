@@ -16,12 +16,13 @@ class pretest extends CI_Controller {
 		$this->load->model('m_user');
 		$this->load->model('m_pretest');
 
-		$id_user = $this->session->userdata('id_user');
+		$id_user 	= $this->session->userdata('id_user');
 
+		$data['getPrePoints']			= $this->m_pretest->countPoints($id_user);
 		$data['getResult']				= $this->m_pretest->getPretestResult($id_user);
 		$data['lastResult']				= $this->m_pretest->getLastData($id_user);
 		$data['level']						= $this->m_user->getLevelPretest($id_user);
-		$data['user']							= $this->m_user->getUser($this->session->userdata('id_user'));
+		$data['user']							= $this->m_user->getUser($id_user);
 		$data['pretestQuestion'] 	= $this->m_pretest->getFirstQuestion();
 		$this->load->view('v_pretest',$data);
 	}
@@ -154,7 +155,7 @@ class pretest extends CI_Controller {
 
 		$id_user = $this->session->userdata('id_user');
 		$data['last'] = $this->m_pretest->getLastData($id_user);
-		$this->load->view('v_continuetest',$data);
+		$this->load->view('v_continuepre',$data);
 	}
 
 }

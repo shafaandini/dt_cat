@@ -32,6 +32,12 @@ class m_pretest extends CI_Model{
     return $this->db->get_where('tbl_pretest_result',$data);
   }
 
+  public function countPoints($id_user) {
+    $this->db->select("(SELECT COUNT(correct_status) FROM tbl_pretest_result
+                        WHERE correct_status = 1 AND id_user='$id_user') AS count",FALSE);
+	  return $this->db->get()->result();
+  }
+
   public function checkResult($id_question,$id_user){
     $data = array(
 			'id_pr_question' => $id_question,
