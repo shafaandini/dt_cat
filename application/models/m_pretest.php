@@ -3,14 +3,14 @@ class m_pretest extends CI_Model{
 
   public function getFirstQuestion(){
     $this->db->from('tbl_pretest_question');
-    $this->db->join('tbl_cat', 'tbl_cat.id_cat=tbl_pretest_question.id_cat');
+  //  $this->db->join('tbl_cat', 'tbl_cat.id_cat=tbl_pretest_question.id_cat');
     $this->db->join('tbl_level', 'tbl_level.id_level=tbl_pretest_question.id_level');
     $this->db->join('tbl_pretest_answer', 'tbl_pretest_answer.id_pr_answer=tbl_pretest_question.choices');
     return $this->db->get()->result();
 	}
 
   public function getData($id) {
-    $this->db->join('tbl_cat', 'tbl_cat.id_cat=tbl_pretest_question.id_cat');
+  //  $this->db->join('tbl_cat', 'tbl_cat.id_cat=tbl_pretest_question.id_cat');
     $this->db->join('tbl_level', 'tbl_level.id_level=tbl_pretest_question.id_level');
     $this->db->join('tbl_pretest_answer', 'tbl_pretest_answer.id_pr_answer=tbl_pretest_question.choices');
     return $this->db->get_where('tbl_pretest_question',array('id_pr_question' => $id))->result();
@@ -20,7 +20,9 @@ class m_pretest extends CI_Model{
     $data = array(
 			'id_user' => $id_user
 		);
-    $this->db->order_by('id_pr_question', 'DESC');
+  //  $this->db->join('tbl_pretest_question', 'tbl_pretest_result.id_pr_question=tbl_pretest_question.id_pr_question');
+//    $this->db->join('tbl_cat', 'tbl_pretest_question.id_cat=tbl_cat.id_cat');
+    $this->db->order_by('tbl_pretest_result.id_pr_question', 'DESC');
     $this->db->limit(1);
     return $this->db->get_where('tbl_pretest_result',$data)->result();
   }
@@ -32,8 +34,8 @@ class m_pretest extends CI_Model{
     return $this->db->get_where('tbl_pretest_result',$data);
   }
 
-  public function countPoints($id_user) {
-    $this->db->select("(SELECT COUNT(correct_status) FROM tbl_pretest_result
+  public function countScore($id_user) {
+    $this->db->select("(SELECT SUM(correct_status) FROM tbl_pretest_result
                         WHERE correct_status = 1 AND id_user='$id_user') AS count",FALSE);
 	  return $this->db->get()->result();
   }
@@ -59,6 +61,6 @@ class m_pretest extends CI_Model{
   public function updateImage($data, $where) {
     $this->db->set($data);
     $this->db->where($where);
-    $this->db->update('tbl_pretest_question');
+    $this->db->update('tbl_pretest_answer');
   }
 }

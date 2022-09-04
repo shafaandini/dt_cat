@@ -26,15 +26,24 @@
                                       <input type="hidden" name="id_ps_question" value="<?php echo $question[0]->id_ps_question; ?>">
                                       <p class="font-weight-light"> Kategori Soal: <?php echo $question[0]->category; ?></p>
 
+                                      <div class="row">
+                                        <div class="col">
+                                          <p class="font-weight-light">
+                                            Level <?php echo $question[0]->level; ?> <br>
+                                            Kategori: <?php echo $question[0]->category; ?>
+                                          </p>
+                                        </div>
+                                      </div>
 
                                       <?php if(strcmp($question[0]->image, NULL) == 0){ ?>
                                         <p class="text-justify">
-                                          <?php echo $question[0]->number_of_question; ?>
+                                          <?php echo $question[0]->number_of_question; ?>.
                                           <?php echo $question[0]->question; ?> <br>
                                      <?php } else{?>
                                        <img src="<?php echo base_url('assets/image/posttest/'.$question[0]->image) ?>" class="rounded mx-auto d-block" width="50%" alt="Responsive image">
                                        <p class="text-justify">
-                                         <?php echo $question[0]->number_of_question; ?>
+                                         <br>
+                                         <?php echo $question[0]->number_of_question; ?>.
                                          <?php echo $question[0]->question; ?> <br>
                                        <?php } ?>
 
@@ -44,8 +53,8 @@
                                         if(strpos($optionDetails, 'png') !== false) {
                                     ?>
                                     <input type="radio" name="posttest" value="<?php echo $optionDetails ?>">
-                                    <img src="<?php echo base_url('assets/image/posttest'.$optionDetails)?>" class="img-fluid"> <br>
-
+                                    <img src="<?php echo base_url('assets/image/posttest/'.$optionDetails)?>" class="rounded" width="20%" alt="Responsive image"> <br>
+                                    <br>
                                   <!-- jika option berupa string -->
                                   <?php }else{ ?>
                                     <input type="radio" name="posttest" value="<?php echo $optionDetails ?>"> <?php echo $optionDetails?> <br>

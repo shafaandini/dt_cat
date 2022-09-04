@@ -18,7 +18,7 @@ class posttest extends CI_Controller {
 
 		$id_user = $this->session->userdata('id_user');
 
-		$data['getPostPoints']			= $this->m_posttest->countPoints($id_user);
+		$data['getPostScore']				= $this->m_posttest->countScore($id_user);
 		$data['getResult']					= $this->m_posttest->getPosttestResult($id_user);
 		$data['lastResult']					= $this->m_posttest->getLastData($id_user);
 		$data['level']							= $this->m_user->getLevelPosttest($id_user);

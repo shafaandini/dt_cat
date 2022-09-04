@@ -10,20 +10,20 @@
 
           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url().'dashboard' ?>">
 
-              <div class="sidebar-brand-text"><?php echo $bio[0]->name; ?></div>
+              <div class="sidebar-brand-text"></div>
           </a>
 
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
                 <a class="nav-link" href="<?php echo base_url().'dashboard' ?>">
-                    <i class="fas fa-fw fa-bookmark"></i>
-                    <span>Beranda</span></a>
+                <i class="fas fa-fw fa-bookmark"></i>
+                <span>Beranda</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url().'pretest' ?>">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Pre-Test</span></a>
+                <i class="fas fa-fw fa-book"></i>
+                <span>Pre-Test</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -41,10 +41,11 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Topbar Navbar -->
 
-                    <h5 class="text-dark"> Design Thinking Adaptive Test </h5>
+                  <h5 class="text-dark"> Graphic Design Adaptive Test  </h5>
 
                     <ul class="navbar-nav ml-auto">
-                          <a href="<?php echo base_url().'logout'; ?>" class="text-dark"> Keluar</a>
+                       <?php echo $bio[0]->name ?> |
+                      <a href="<?php echo base_url().'logout'; ?>" class="text-dark"> Keluar</a>
                     </ul>
 
                 </nav>
@@ -55,6 +56,16 @@
                     </div>
 
                     <div class="row">
+
+                      <div class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
+                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-dark">
+                              Halo, <?php echo $bio[0]->name ?>, <?php echo $bio[0]->class ?> !</h6>
+                          </div>
+                        </div>
+                      </div>
+
 
                         <!-- Area Chart -->
                         <div class="col-xl-6 col-lg-6">
@@ -73,15 +84,16 @@
                               else { ?>
                                 <div class="card-body">
                                   <div class="alert alert-success" role="alert">
-                                    <h4 class="alert-heading">Kamu sudah mengikuti Pretest!</h4>
+                                    <h4 class="alert-heading font-weight-bold">Kamu sudah mengikuti Pretest!</h4>
                                     <p class="font-weight-light"> Design Thinking kamu berada di: </p>
-                                    <p class="font-weight-bold">Tingkat <?php echo $pretest[0]->level ?>  </p>
-                                    <p class="mb-0"> </p>
+                                    <p class="font-weight-bold">Tingkat <?php echo $pretest[0]->level ?> <br> <?php echo $pretest[0]->category ?>  </p>
+                                    <p class="font-weight-light"> <?php echo $pretest[0]->description ?>  </p>
+
                                   </div>
 
                                   <div class="alert alert-success" role="alert">
-                                    <h5 class="font-weight-bold text-center">Poin Kamu</h5> <hr>
-                                    <h1 class="display-2 font-weight-bold text-center"> <?php echo $getPrePoints[0]->count; ?></h1>
+                                    <h5 class="font-weight-bold text-center">Nilai Kamu</h5> <hr>
+                                    <h1 class="display-2 font-weight-bold text-center"> <?php echo $getPreScore[0]->count; ?></h1>
                                   </div>
 
                                 </div>
@@ -106,10 +118,11 @@
                                   else { ?>
                                     <div class="card-body">
                                       <div class="alert alert-success" role="alert">
-                                        <h4 class="alert-heading">Kamu sudah mengikuti Post-Test!</h4>
+                                        <h4 class="alert-heading font-weight-bold">Kamu sudah mengikuti Post-Test!</h4>
                                         <p class="font-weight-light"> Design Thinking kamu berada di: </p>
-                                        <p class="font-weight-bold">Tingkat <?php echo $pretest[0]->level ?>  </p>
-                                        <p class="mb-0">  </p>
+                                        <p class="font-weight-bold">Tingkat <?php echo $posttest[0]->level ?> <br> <?php// echo $lastPosttest[0]->category ?>  </p>
+                                        <p class="font-weight-light"> <?php// echo $lastPosttest[0]->description ?>  </p>
+
                                       </div>
 
                                       <div class="alert alert-success" role="alert">

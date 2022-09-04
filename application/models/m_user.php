@@ -37,4 +37,8 @@ class m_user extends CI_Model{
     $this->db->where($where);
     $this->db->update('tbl_user');
   }
+
+  public function uploadUser($data) {
+    $this->db->insert('tbl_user',$data);
+  }
 }

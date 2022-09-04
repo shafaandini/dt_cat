@@ -29,11 +29,11 @@ class upload extends CI_Controller {
     }
 
       $data = array(
-        'image' => $nmfile
+        'answer' => $nmfile
       );
 
       $where = array(
-        'number_of_question' => '1'
+        'number_of_question' => '2'
       );
     $this->m_posttest->updateImage($data, $where);
     redirect('upload');

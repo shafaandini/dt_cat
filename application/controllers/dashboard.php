@@ -18,11 +18,13 @@ class dashboard extends CI_Controller {
 	public function index() {
 		$id_user = $this->session->userdata('id_user');
 
-		$data['getPostPoints']		= $this->m_posttest->countPoints($id_user);
-		$data['getPrePoints']			= $this->m_pretest->countPoints($id_user);
+		$data['getPostPoints']		= $this->m_posttest->countScore($id_user);
+		$data['getPreScore']			= $this->m_pretest->countScore($id_user);
 		$data['bio'] 	    				= $this->m_user->getUser($id_user);
 		$data['pretest']  				= $this->m_user->getLevelPretest($id_user);
 		$data['posttest']					= $this->m_user->getLevelPosttest($id_user);
+		$data['lastPretest']			= $this->m_pretest->getLastData($id_user);
+		$data['lastPosttest']			= $this->m_posttest->getLastData($id_user);
 		$this->load->view('v_dashboard',$data);
 	}
 }

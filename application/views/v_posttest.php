@@ -6,32 +6,33 @@
 <body id="page-top">
 
     <div id="wrapper">
-        <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+      <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
-          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url().'dashboard' ?>">
-              <div class="sidebar-brand-text"><?php echo $user[0]->name; ?></div>
-          </a>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url().'dashboard' ?>">
 
-            <hr class="sidebar-divider my-0">
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url().'dashboard' ?>">
-                    <i class="fas fa-fw fa-bookmark"></i>
-                    <span>Beranda</span></a>
-            </li>
+            <div class="sidebar-brand-text"></div>
+        </a>
 
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url().'pretest' ?>">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Pre-Test</span></a>
-            </li>
+          <hr class="sidebar-divider my-0">
+          <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url().'dashboard' ?>">
+              <i class="fas fa-fw fa-bookmark"></i>
+              <span>Beranda</span></a>
+          </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url().'posttest' ?>">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Post-Test</span></a>
-            </li>
-        </ul>
+          <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url().'pretest' ?>">
+              <i class="fas fa-fw fa-book"></i>
+              <span>Pre-Test</span></a>
+          </li>
+
+          <!-- Nav Item - Tables -->
+          <li class="nav-item active">
+              <a class="nav-link" href="<?php echo base_url().'posttest' ?>">
+                  <i class="fas fa-fw fa-book"></i>
+                  <span>Post-Test</span></a>
+          </li>
+      </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -43,7 +44,8 @@
                     <h5 class="text-dark"> Design Thinking Adaptive Test </h5>
 
                     <ul class="navbar-nav ml-auto">
-                          <a href="<?php echo base_url().'logout'; ?>" class="text-dark"> Keluar</a>
+                      <?php echo $user[0]->name ?> |
+                      <a href="<?php echo base_url().'logout'; ?>" class="text-dark"> Keluar</a>
                     </ul>
 
                 </nav>
@@ -79,19 +81,17 @@
                                      <div class="row">
                                        <div class="col-6">
                                          <div class="alert alert-success" role="alert">
-                                           <h4 class="alert-heading">Kamu sudah mengikuti Post-Test!</h4>
+                                           <h4 class="alert-heading font-weight-bold">Kamu sudah mengikuti Post-Test!</h4>
                                            <p class="font-weight-light"> Design Thinking kamu berada di: </p>
-                                           <p class="font-weight-bold"> Tingkat <?php echo $level[0]->level ?>  </p>
-                                           <p class="mb-0">  </p>
-                                           <hr>
-                                           <p class="font-weight-bold"> Silakan mengikuti Post-Test di halaman Post-Test.
+                                           <p class="font-weight-bold"> Tingkat <?php echo $level[0]->level ?> <br> <?php //echo $lastResult[0]->category ?>  </p>
+                                           <p class="font-weight-light"> <?php// echo $lastResult[0]->description ?>  </p>
                                            </div>
                                        </div>
 
                                        <div class="col-6">
                                          <div class="alert alert-success" role="alert">
-                                           <h5 class="font-weight-bold text-center">Poin Kamu</h5> <hr>
-                                           <h1 class="display-2 font-weight-bold text-center"> <?php echo $getPostPoints[0]->count; ?></h1>
+                                           <h5 class="font-weight-bold text-center">Nilai Kamu</h5> <hr> <br>
+                                           <h1 class="display-2 font-weight-bold text-center"> <?php echo $getPostScore[0]->count; ?></h1> <br>
                                          </div>
                                        </div>
                                      </div>
@@ -138,14 +138,44 @@
 
 <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-notify modal-info" role="document">
-    <div class="modal-content text-center">
+    <div class="modal-content">
       <div class="modal-header d-flex justify-content-center">
-        <h5 class="heading text font-weight-bold">Design Thinking Adaptive Test <br> Pre-Test </h5>
+        <h5 class="heading text font-weight-bold text-center">Design Thinking Adaptive Test <br> Post-Test </h5>
       </div>
       <div class="modal-body">
-        <p class="font-weight-light">Tes ini akan berisikan soal dari materi Prinsip dan Elemen Desain Grafis pada Mata Pelajaran
-         Desain Grafis Percetakan. Tes ini diberikan untuk mengukur kemampuan Pemikiran Desain atau Design Thinking.
-       </p>
+        <p class="font-weight-bold"> Tentang tes: </p>
+        <table class="table">
+          <tbody>
+            <tr class="font-weight-light">
+              <td>1.</th>
+              <td>Tes ini berisikan soal dari materi Prinsip, Elemen, dan Tipografi Desain Grafis pada Mata Pelajaran Desain Grafis Percetakan</td>
+            </tr>
+            <tr class="font-weight-light">
+              <td>2.</th>
+              <td>Soal berjumlah 20</td>
+            </tr>
+            <tr class="font-weight-light">
+              <td>3.</th>
+              <td>Jika jawaban benar, maka nomor akan berganti. Namun jika jawaban salah, maka akan tetap pada nomor tersebut dengan deskripsi pertanyaan yang lebih rinci dari sebelumnya </td>
+            </tr>
+            <tr class="font-weight-light">
+              <td>4.</th>
+              <td>Pertanyaan di nomor yang sama memiliki perbedaan pada tulisan yang dicetak tebal</td>
+            </tr>
+            <tr class="font-weight-light">
+              <td>5.</th>
+              <td>Setiap soal yang dijawab benar akan bernilai 1.</td>
+            </tr>
+            <tr class="font-weight-light">
+              <td>6.</th>
+              <td> Pastikan yakin dengan pilihanmu karena jika sudah dijawab, tidak bisa kembali ke nomor sebelumnya.</td>
+            </tr>
+            <tr class="font-weight-light">
+              <td>7.</th>
+              <td>Jika menjawab 3x salah berturut-turut pada nomor yang sama, maka tes selesai (keluar dari sistem).</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <!--Footer-->
       <div class="modal-footer flex-center">

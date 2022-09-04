@@ -16,9 +16,9 @@ class pretest extends CI_Controller {
 		$this->load->model('m_user');
 		$this->load->model('m_pretest');
 
-		$id_user 	= $this->session->userdata('id_user');
+		$id_user = $this->session->userdata('id_user');
 
-		$data['getPrePoints']			= $this->m_pretest->countPoints($id_user);
+		$data['getPreScore']			= $this->m_pretest->countScore($id_user);
 		$data['getResult']				= $this->m_pretest->getPretestResult($id_user);
 		$data['lastResult']				= $this->m_pretest->getLastData($id_user);
 		$data['level']						= $this->m_user->getLevelPretest($id_user);
@@ -83,6 +83,7 @@ class pretest extends CI_Controller {
 			foreach ($getdata as $key) {
 				$getAnswer 					 = $key->answer;
 				$getLevel 					 = $key->id_level;
+				$getScore						 = $key->score;
 				$getNumberofQuestion = $key->number_of_question;
 			}
 
@@ -116,7 +117,7 @@ class pretest extends CI_Controller {
 				$this->m_user->updateResult($data2, $where2);
 
 				//cek nomor terakhir atau bukan
-				if ($id_question % 28 == 0 OR $id_question % 29 == 0 OR $id_question % 30 == 0 ) {
+				if ($id_question % 58 == 0 OR $id_question % 59 == 0 OR $id_question % 60 == 0 ) {
 					redirect('pretest');
 				}
 				//kalau bukan cari level sekanjutnya
